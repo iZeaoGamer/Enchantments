@@ -92,68 +92,6 @@ class EnchantmentsLoader extends PluginBase implements Listener{
 			$entity->close();
 		}
 	}
-
-	/**
-	 * @param BlockBreakEvent $event
-	 *
-	 * @priority LOWEST
-	 * @ignoreCancelled true
-	 */
-	public function onBlockBreak(BlockBreakEvent $event): void{
-		$drops = $event->getDrops();
-
-		if(count($drops) > 0){
-			$level = $event->getPlayer()->getInventory()->getItemInHand()->getEnchantmentLevel(Enchantment::FORTUNE);
-
-			if($level > 0){
-				switch($event->getBlock()->getId()){
-					case Item::EMERALD_ORE: {
-						$event->setDrops([Item::get(Item::EMERALD, 0, 1 + rand(0, $level))]);
-						break;
-					}
-
-					case Item::DIAMOND_ORE: {
-						$event->setDrops([Item::get(Item::DIMOND, 0, 1 + rand(0, $level))]);
-						break;
-					}
-
-					case Item::LIT_REDSTONE_ORE: 
-					case Item::REDSTONE_ORE: {
-						$event->setDrops([Item::get(Item::REDSTONE_DUST, 0, rand(4, 5) + rand(0, $level + rand(0, 3)))]);
-						break;
-					}
-
-					case Item::LAPIS_ORE: {
-						$event->setDrops([Item::get(Item::DYE, 4, rand(4, 8) + rand(0, $level + rand(0, 5)))]);
-						break;
-					}
-
-					case Item::COAL_ORE: {
-						$event->setDrops([Item::get(Item::COAL, 0, 1 + rand(0, $level))]);
-						break;
-					}
-
-					case Item::GRAVEL: {
-						if($level >= 3){
-							$event->setDrops([Item::get(Item::FLINT)]);
-						}
-						break;
-					}
-
-					case Item::MELON_BLOCK: {
-						$event->setDrops([Item::get(Item::MELON, 0, rand(3, 7) + rand(0, $level + rand(0, 4)))]);
-						break;
-					}
-
-					case Item::GLOWSTONE: {
-						$event->setDrops([Item::get(Item::GLOWSTONE_DUST, 0, rand(2, 4) + rand(0, $level + rand(0, 2)))]);
-						break;
-					}
-				}
-			}
-		}
-	}
-
 	/**
 	 * @param EntityDamageEvent $event
 	 *
@@ -207,37 +145,6 @@ class EnchantmentsLoader extends PluginBase implements Listener{
 						$entity->setOnFire($level * 3 + 1);
 					}
 				} 
-			}
-		}
-	}
-
-	/**
-	 * @param EntityDeathEvent $event
-	 *
-	 * @priority LOWEST
-	 */
-	public function onEntityDeath(EntityDeathEvent $event): void{
-		$entity = $event->getEntity();
-
-		if(!$entity instanceof Human){
-			$damageEvent = $entity->getLastDamageCause();
-
-			if($damageEvent instanceof EntityDamageByEntityEvent){
-				$damager = $damageEvent->getDamager();
-
-				if($damager instanceof Player){
-					$level = $damager->getInventory()->getItemInHand()->getEnchantmentLevel(Enchantment::LOOTING);
-
-					if($level > 0){
-						$drops = [];
-
-						foreach($event->getDrops() as $drop){
-							$drops[] = $drop->setCount($drop->getCount() + rand(0, $level));
-						}
-
-						$event->setDrops($drops);
-					}
-				}
 			}
 		}
 	}
