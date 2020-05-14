@@ -24,15 +24,15 @@ use pocketmine\block\TNT;
 class EnchantmentsLoader extends PluginBase implements Listener{
 
 	public function onEnable(){
-		Enchantment::registerEnchantment(new Enchantment(Enchantment::SHARPNESS, 'Sharpness', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD | Enchantment::SLOT_AXE, Enchantment::SLOT_NONE, 5));
-		Enchantment::registerEnchantment(new Enchantment(Enchantment::FORTUNE, 'Fortune', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_PICKAXE | Enchantment::SLOT_AXE | Enchantment::SLOT_SHOVEL, Enchantment::SLOT_NONE, 3));
+	//	Enchantment::registerEnchantment(new Enchantment(Enchantment::SHARPNESS, 'Sharpness', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD | Enchantment::SLOT_AXE, Enchantment::SLOT_NONE, 5));
+	//	Enchantment::registerEnchantment(new Enchantment(Enchantment::FORTUNE, 'Fortune', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_PICKAXE | Enchantment::SLOT_AXE | Enchantment::SLOT_SHOVEL, Enchantment::SLOT_NONE, 3));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::KNOCKBACK, 'Knockback', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD, Enchantment::SLOT_NONE, 2));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::POWER, 'Power', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_BOW, Enchantment::SLOT_NONE, 5));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::PUNCH, 'Punch',  Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_BOW, Enchantment::SLOT_NONE, 2));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::INFINITY, 'Infinity', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_BOW, Enchantment::SLOT_NONE, 1));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::FIRE_ASPECT, 'Fire aspect', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD, Enchantment::SLOT_NONE, 2));
 		Enchantment::registerEnchantment(new Enchantment(Enchantment::FLAME, 'Flame', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_BOW, Enchantment::SLOT_NONE, 1)); 
-		Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, 'Looting', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD, Enchantment::SLOT_NONE, 3));
+		//Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, 'Looting', Enchantment::RARITY_UNCOMMON, Enchantment::SLOT_SWORD, Enchantment::SLOT_NONE, 3));
 
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
